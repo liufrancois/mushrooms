@@ -17,8 +17,6 @@ requirements:
 	conda env update --name $(PROJECT_NAME) --file environment.yml --prune
 	
 
-
-
 ## Delete all compiled Python files
 .PHONY: clean
 clean:
@@ -38,8 +36,6 @@ format:
 	black --config pyproject.toml Mushrooms
 
 
-
-
 ## Set up python interpreter environment
 .PHONY: create_environment
 create_environment:
@@ -47,7 +43,6 @@ create_environment:
 	
 	@echo ">>> conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
 	
-
 
 
 #################################################################################
@@ -59,6 +54,16 @@ create_environment:
 .PHONY: data
 data: requirements
 	$(PYTHON_INTERPRETER) Mushrooms/dataset.py
+
+## Train the model
+.PHONY: train
+train: requirements
+	$(PYTHON_INTERPRETER) Mushrooms/modeling/train.py
+
+## Make predictions
+.PHONY: predict
+predict: requirements
+	$(PYTHON_INTERPRETER) Mushrooms/modeling/predict.py
 
 
 #################################################################################

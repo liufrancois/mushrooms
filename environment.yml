@@ -17,6 +17,9 @@ dependencies:
   - numpy
   - pandas
   - scikit-learn
+  - typer
+  - graphviz
   - pip:
     - python-dotenv
+    - graphviz
     - -e .
